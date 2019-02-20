@@ -7,6 +7,7 @@ declare module "react-native-cached-image" {
       style?: ReactNative.ImageStyle
       resizeMode?: ReactNative.ImageResizeMode
       source?: ReactNative.ImageURISource
+      onLoadEnd?: any;
       /**
        * props for the ActivityIndicator that is shown while the image is downloaded.
        */
