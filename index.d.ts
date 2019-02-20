@@ -10,7 +10,7 @@ declare module "react-native-cached-image" {
       /**
        * props for the ActivityIndicator that is shown while the image is downloaded.
        */
-      activityIndicatorProps: ReactNative.ActivityIndicatorProperties
+      activityIndicatorProps?: ReactNative.ActivityIndicatorProperties
       /** 
        * component prop to set custom ActivityIndicator 
        */
@@ -19,12 +19,12 @@ declare module "react-native-cached-image" {
        * function when provided, the returned object will be used as the headers object 
        * when sending the request to download the image. (default: () => Promise.resolve({})) 
        */
-      resolveHeaders: Promise<{}>
+      resolveHeaders?: Promise<{}>
       /**
        * array|bool an array of keys to use from the source.
        * uri query string or a bool value stating whether to use the entire query string or not. (default: false)
        */
-      useQueryParamsInCacheKey: string[] | boolean
+      useQueryParamsInCacheKey?: string[] | boolean
       /**
        * string allows changing the root directory to use for caching.
        * The default directory is sufficient for most use-cases.
@@ -33,17 +33,17 @@ declare module "react-native-cached-image" {
        * (you will have to manage cleanup manually).
        * (default: ImageCacheProvider.LOCATION.CACHE)
        */
-      cacheLocation: string
+      cacheLocation?: string
       /**
        * prop to display a background image while the source image is downloaded.
        * This will work even in android, but will not display background image
        * if there you set borderRadius on this component style prop
        */
-      defaultSource: ReactNative.ImageURISource
+      defaultSource?: ReactNative.ImageURISource
       /**
        * prop to set placeholder image. when source.uri is null or cached failed, the fallbackSource will be display.
        */
-      fallbackSource: string
+      fallbackSource?: string
     }
 
     interface CacheOptions {
