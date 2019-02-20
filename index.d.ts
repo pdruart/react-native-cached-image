@@ -4,6 +4,8 @@ import * as React from 'react'
 declare module "react-native-cached-image" {
   namespace CachedImage {
     interface Image extends ReactNative.Image {
+      style: ReactNative.ImageStyle
+      resizeMode: ReactNative.ImageResizeMode
       /**
        * props for the ActivityIndicator that is shown while the image is downloaded.
        */
@@ -11,7 +13,7 @@ declare module "react-native-cached-image" {
       /** 
        * component prop to set custom ActivityIndicator 
        */
-      loadingIndicator: ReactNative.ComponentInterface<any>
+      loadingIndicator: any
       /** 
        * function when provided, the returned object will be used as the headers object 
        * when sending the request to download the image. (default: () => Promise.resolve({})) 
@@ -43,7 +45,7 @@ declare module "react-native-cached-image" {
       fallbackSource: string
     }
 
-    interface CacheOptions  {
+    interface CacheOptions {
       /** an object to be used as the headers when sending the request for the url */
       headers: object
       /** the number of seconds each url will stay in the cache. default 2 weeks */
@@ -86,37 +88,37 @@ declare module "react-native-cached-image" {
 
     interface ImageCacheManager {
       /** download an image and cache the result according to the given options */
-      downloadAndCacheUrl(url: String, options:CacheOptions ): Promise<any>
+      downloadAndCacheUrl (url: String, options: CacheOptions): Promise<any>
 
       /** Delete the cached image corresponding to the given url */
-      deleteUrl(urls: string, options?: CacheOptions): Promise<any>
-       
+      deleteUrl (urls: string, options?: CacheOptions): Promise<any>
+
       /**
       * Seed the cache of a specified url with a local image
       * Handy if you have a local copy of a remote image, e.g. you just uploaded local to url.
       */
-      seedAndCacheUrl(url: string, seedPath: string, options?: CacheOptions): Promise<any>
-       
+      seedAndCacheUrl (url: string, seedPath: string, options?: CacheOptions): Promise<any>
+
       /**
        * Clear the entire cache.
        */
-      clearCache(): Promise<any>
+      clearCache (): Promise<any>
 
       /**
        * Return info about the cache, list of files and the total size of the cache.
        */
-      getCacheInfo(options?: CacheOptions): Promise<PromiseCacheInfo>
+      getCacheInfo (options?: CacheOptions): Promise<PromiseCacheInfo>
       // LOCATION : {
       //   CACHE: string
       //   BUNDLE: string
       // }
     }
     interface ImageCachePreloader {
-      preloadImages(urls: string[], imageCacheManager: ImageCacheManager, numberOfConcurrentPreloads: number): Promise<any>
+      preloadImages (urls: string[], imageCacheManager: ImageCacheManager, numberOfConcurrentPreloads: number): Promise<any>
     }
   }
-  export class CachedImage extends React.Component<CachedImage.Image, any> {}
-  export class ImageCacheProvider extends React.Component<CachedImage.ImageCacheProvider, any> {}
+  export class CachedImage extends React.Component<CachedImage.Image, any> { }
+  export class ImageCacheProvider extends React.Component<CachedImage.ImageCacheProvider, any> { }
   export const ImageCacheManager: CachedImage.ImageCacheManager
   export const ImageCachePreloader: CachedImage.ImageCachePreloader
 }
