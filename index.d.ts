@@ -3,10 +3,10 @@ import * as React from 'react'
 
 declare module "react-native-cached-image" {
   namespace CachedImage {
-    interface Image extends ReactNative.Image {
-      style: ReactNative.ImageStyle
-      resizeMode: ReactNative.ImageResizeMode
-      source: ReactNative.ImageURISource
+    interface Image {
+      style?: ReactNative.ImageStyle
+      resizeMode?: ReactNative.ImageResizeMode
+      source?: ReactNative.ImageURISource
       /**
        * props for the ActivityIndicator that is shown while the image is downloaded.
        */
@@ -14,7 +14,7 @@ declare module "react-native-cached-image" {
       /** 
        * component prop to set custom ActivityIndicator 
        */
-      loadingIndicator: any
+      loadingIndicator?: any
       /** 
        * function when provided, the returned object will be used as the headers object 
        * when sending the request to download the image. (default: () => Promise.resolve({})) 
