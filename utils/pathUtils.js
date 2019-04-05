@@ -4,7 +4,7 @@ const _ = require('lodash');
 const URL = require('url-parse');
 const SHA1 = require("crypto-js/sha1");
 
-const defaultImageTypes = ['png', 'jpeg', 'jpg', 'gif', 'bmp', 'tiff', 'tif'];
+const defaultImageTypes = ['png', 'jpeg', 'jpg', 'gif', 'bmp', 'tiff', 'tif', 'webp'];
 
 function serializeObjectKeys(obj) {
     return _(obj)
@@ -46,8 +46,8 @@ function getHostCachePathComponent(url) {
         host
     } = new URL(url);
 
-    return host.replace(/\.:/gi, '_').replace(/[^a-z0-9_]/gi, '_').toLowerCase()
-      + '_' + SHA1(host);
+    return host.replace(/\.:/gi, '_').replace(/[^a-z0-9_]/gi, '_').toLowerCase() +
+        '_' + SHA1(host);
 }
 
 /**

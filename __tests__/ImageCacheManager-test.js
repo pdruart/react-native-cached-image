@@ -1,7 +1,13 @@
 'use strict';
 
-jest.mock('rn-fetch-blob', () => ({default: {fs: {}}}));
-jest.mock('react-native-clcasher/MemoryCache', () => ({default: {}}));
+jest.mock('rn-fetch-blob', () => ({
+    default: {
+        fs: {}
+    }
+}));
+jest.mock('react-native-clcasher/MemoryCache', () => ({
+    default: {}
+}));
 
 import ImageCacheManager from '../ImageCacheManager';
 import SimpleMemoryCache from './SimpleMemoryCache';
@@ -26,7 +32,7 @@ describe('ImageCacheManager', () => {
         it('should download a file when not in cache', () => {
             return icm.getCacheInfo()
                 .then(res => console.log(res))
-                .then(() => icm.downloadAndCacheUrl('https://example.com/image.jpg'))
+                .then(() => icm.downloadAndCacheUrl('https://d1z5465ojv07ki.cloudfront.net/dev/a3dcb3f6a55148efaf45feae3/1G0KkwNHya/c5iGuMlFTO_w1125.webp'))
                 .then(() => icm.getCacheInfo())
                 .then(res => console.log(res))
         });
